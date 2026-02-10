@@ -94,6 +94,13 @@ auto AsyncPositionControlHandler::getTargetFeedback(const std::optional<RobotSta
     return feedback;
   }
 
+  if (!target_position_.has_value()) {
+    // No target set yet, return idle status
+    feedback.status = TargetStatus::kIdle;
+
+    return feedback;
+  }
+
   try {
     if (robot_state.has_value()) {
       current_robot_state_ = robot_state.value();
@@ -102,10 +109,11 @@ auto AsyncPositionControlHandler::getTargetFeedback(const std::optional<RobotSta
     }
 
     switch (current_robot_state_.robot_mode) {
-      case RobotMode::kMove: {
+      case RobotMode::kMove:
+      case RobotMode::kIdle: {
+        Eigen::Map<const Vector7d> target_position(target_position_->data(), Robot::kNumJoints);
         Eigen::Map<const Vector7d> current_position(current_robot_state_.q_d.data(),
                                                     Robot::kNumJoints);
-        Eigen::Map<const Vector7d> target_position(target_position_.data(), Robot::kNumJoints);
         Eigen::Map<const Vector7d> current_velocity(current_robot_state_.dq_d.data(),
                                                     Robot::kNumJoints);
         auto position_error = (current_position - target_position).norm();
@@ -118,9 +126,6 @@ auto AsyncPositionControlHandler::getTargetFeedback(const std::optional<RobotSta
         }
         break;
       }
-      case RobotMode::kIdle:
-        feedback.status = TargetStatus::kIdle;
-        break;
       case RobotMode::kReflex:
         feedback.status = TargetStatus::kAborted;
         feedback.error_message = "Control aborted due to reflex.";
@@ -144,9 +149,10 @@ auto AsyncPositionControlHandler::getTargetFeedback(const std::optional<RobotSta
 }
 
 auto AsyncPositionControlHandler::stopControl() -> void {
+  auto motion_finished = JointPositions{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+  motion_finished.motion_finished = true;
+
   try {
-    auto motion_finished = JointPositions{target_position_};
-    motion_finished.motion_finished = true;
     if (active_robot_control_) {
       active_robot_control_->writeOnce(motion_finished);
       active_robot_control_.reset();
@@ -156,7 +162,7 @@ auto AsyncPositionControlHandler::stopControl() -> void {
     logging::logError("Error while stopping async position control: {}", e.what());
   }
 
-  control_status_ = TargetStatus::kIdle;
+  control_status_ = TargetStatus::kAborted;
 }
 
 }  // namespace franka

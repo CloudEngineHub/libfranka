@@ -63,11 +63,6 @@ TEST_F(AsyncPositionControlTests,
        GivenNotStartedToMoveYet_WhenGetTargetFeedback_ThenReturnsIdleStatus) {
   auto async_position_control_handler_result = startHandler();
   const auto& position_control_handler = async_position_control_handler_result.handler;
-  auto expected_robot_state = franka::RobotState{.robot_mode = franka::RobotMode::kIdle};
-
-  EXPECT_CALL(*robot_impl_mock_, readOnce())
-      .Times(1)
-      .WillOnce(::testing::Return(expected_robot_state));
 
   auto feedback_result = position_control_handler->getTargetFeedback();
 
@@ -189,15 +184,20 @@ TEST_F(AsyncPositionControlTests,
 }
 
 TEST_F(AsyncPositionControlTests,
-       GivenRobotModeNotInMove_WhenGetTargetFeedback_ThenReturnsAbortedStatus) {
+       GivenRobotModeReflex_WhenGetTargetFeedback_ThenReturnsAbortedStatus) {
   auto async_position_control_handler_result = startHandler();
   const auto& position_control_handler = async_position_control_handler_result.handler;
+  auto expected_target_position = franka::JointPositions{0.0, -0.5, 0.0, -1.0, 0.0, 1.0, 0.5};
   auto expected_robot_state = franka::RobotState{.robot_mode = franka::RobotMode::kReflex};
 
+  EXPECT_CALL(*robot_impl_mock_, writeOnce(expected_target_position)).Times(1);
   EXPECT_CALL(*robot_impl_mock_, readOnce())
       .Times(1)
       .WillOnce(::testing::Return(expected_robot_state));
 
+  auto target = franka::AsyncPositionControlHandler::JointPositionTarget{
+      .joint_positions = expected_target_position.q};
+  auto command_result = position_control_handler->setJointPositionTarget(target);
   auto feedback_result = position_control_handler->getTargetFeedback();
 
   ASSERT_EQ(feedback_result.status, franka::TargetStatus::kAborted);

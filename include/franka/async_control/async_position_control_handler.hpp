@@ -106,7 +106,7 @@ class AsyncPositionControlHandler {
   TargetStatus control_status_{TargetStatus::kIdle};
   franka::RobotState current_robot_state_{};
 
-  std::array<double, Robot::kNumJoints> target_position_{};
+  std::optional<std::array<double, Robot::kNumJoints>> target_position_{};
 
   double goal_tolerance_;  // [rad]
 };

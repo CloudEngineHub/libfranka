@@ -3,8 +3,8 @@
 All notable changes to libfranka in this file.
 
 ## UNRELEASED
-
-## libfranka - C++
+### libfranka - C++
+- fix: Sometimes the PTP motion could get stuck in 'idle' after reaching the goal while doing async PTP motions
 - feat: updated cmake_minimum_required to v3.16
 
 ## [0.20.4]
