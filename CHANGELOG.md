@@ -2,6 +2,11 @@
 
 All notable changes to libfranka in this file.
 
+## UNRELEASED
+
+## libfranka - C++
+- feat: updated cmake_minimum_required to v3.16
+
 ## [0.20.4]
 ### libfranka - C++
 - fix: valgrind will not report as error reachable-type memleaks from gtest (see https://github.com/google/googletest/issues/4109)
