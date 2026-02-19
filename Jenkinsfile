@@ -16,12 +16,32 @@ pipeline {
   options {
     parallelsAlwaysFailFast()
     timeout(time: 2, unit: 'HOURS')
+    skipDefaultCheckout()
   }
   environment {
-    VERSION = feDetermineVersionFromGit()
     UNSTABLE = 'UNSTABLE'
   }
   stages {
+    stage('Checkout') {
+        steps{
+          checkout([
+                $class: 'GitSCM',
+                branches: scm.branches,
+                userRemoteConfigs: scm.userRemoteConfigs,
+            ])
+            
+            sshagent(['git_ssh']) {
+                sh '''
+                    ssh-keyscan -t rsa bitbucket.fe.lan >> ~/.ssh/known_hosts
+                    git config submodule.common.url ssh://git@bitbucket.fe.lan:7999/moctrl/libfranka-common.git
+                    git submodule update --init --recursive --depth 1 
+                '''
+            }
+            script{
+              env.VERSION = feDetermineVersionFromGit()
+            }
+        }
+    }
     stage('Matrix') {
       matrix {
         axes {
