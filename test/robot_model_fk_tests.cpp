@@ -1,7 +1,8 @@
 // Copyright (c) 2024 Franka Robotics GmbH
 // Use of this source code is governed by the Apache-2.0 license, see LICENSE
-#include "franka/robot_model.h"
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
+
+#include "robot_model.h"
 #include "test_utils.h"
 
 #include <Eigen/Dense>

@@ -1,7 +1,8 @@
 // Copyright (c) 2023 Franka Robotics GmbH
 // Use of this source code is governed by the Apache-2.0 license, see LICENSE
+#include "robot_model.h"
+
 #include <franka/model.h>
-#include <franka/robot_model.h>
 
 #include <iostream>
 

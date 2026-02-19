@@ -9,11 +9,11 @@
 #include <franka/exception.h>
 #include <franka/model.h>
 #include <franka/robot.h>
-#include <franka/robot_model_base.h>
 #include <research_interface/robot/service_types.h>
 
 #include "helpers.h"
 #include "mock_server.h"
+#include "robot_model_base.h"
 #include "test_utils.h"
 
 using ::testing::_;
@@ -22,7 +22,7 @@ using ::testing::Return;
 using ::testing::WithArgs;
 using namespace research_interface::robot;
 
-class MockRobotModel : public RobotModelBase {
+class MockRobotModel : public franka::RobotModelBase {
  public:
   MOCK_METHOD5(mass,
                void(const std::array<double, 7>&,

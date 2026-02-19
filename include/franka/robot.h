@@ -10,7 +10,6 @@
 #include <franka/control_types.h>
 #include <franka/duration.h>
 #include <franka/lowpass_filter.h>
-#include <franka/robot_model_base.h>
 #include <franka/robot_state.h>
 #include <research_interface/robot/service_types.h>
 #include <franka/commands/get_robot_model_command.hpp>
@@ -22,7 +21,7 @@
 namespace franka {
 
 class Model;
-
+class RobotModelBase;
 class ActiveControlBase;
 
 /**
