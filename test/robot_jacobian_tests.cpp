@@ -9,8 +9,8 @@
 #include <random>
 #include <sstream>
 
-#include "test_utils.h"
 #include "robot_model.h"
+#include "test_utils.h"
 
 // Constants for test tolerance
 constexpr double kJacobianTolerance = 1e-3;

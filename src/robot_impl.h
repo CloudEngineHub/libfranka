@@ -16,10 +16,10 @@
 #include <research_interface/robot/service_traits.h>
 #include <research_interface/robot/service_types.h>
 
-#include "robot_model_base.h"
 #include "logging/robot_state_logger.hpp"
 #include "network.h"
 #include "robot_control.h"
+#include "robot_model_base.h"
 
 namespace franka {
 

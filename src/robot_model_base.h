@@ -232,4 +232,4 @@ class RobotModelBase {
       const std::array<double, 16>& ee_t_k) = 0;
 };
 
-}
+}  // namespace franka

@@ -11,9 +11,9 @@
 #include <franka/robot.h>
 #include <research_interface/robot/service_types.h>
 
-#include "robot_model_base.h"
 #include "helpers.h"
 #include "mock_server.h"
+#include "robot_model_base.h"
 #include "test_utils.h"
 
 using ::testing::_;
