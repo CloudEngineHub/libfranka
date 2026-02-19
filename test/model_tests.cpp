@@ -22,7 +22,7 @@ using ::testing::Return;
 using ::testing::WithArgs;
 using namespace research_interface::robot;
 
-class MockRobotModel : public RobotModelBase {
+class MockRobotModel : public franka::RobotModelBase {
  public:
   MOCK_METHOD5(mass,
                void(const std::array<double, 7>&,

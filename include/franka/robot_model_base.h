@@ -4,6 +4,8 @@
 
 #include <array>
 
+namespace franka {
+
 /**
  * @file robot_model_base.h
  * Abstract interface class for robot dynamic parameters computed from the URDF model with
@@ -229,3 +231,5 @@ class RobotModelBase {
       const std::array<double, 16>& f_t_ee,
       const std::array<double, 16>& ee_t_k) = 0;
 };
+
+}
