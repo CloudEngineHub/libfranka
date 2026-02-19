@@ -10,12 +10,13 @@
 #include <franka/joint_velocity_limits.h>
 #include <franka/model.h>
 #include <franka/robot.h>
-#include <franka/robot_model_base.h>
 #include <franka/commands/get_robot_model_command.hpp>
 
 #include <research_interface/robot/rbk_types.h>
 #include <research_interface/robot/service_traits.h>
 #include <research_interface/robot/service_types.h>
+
+#include "robot_model_base.h"
 #include "logging/robot_state_logger.hpp"
 #include "network.h"
 #include "robot_control.h"

@@ -4,7 +4,6 @@
 #include <franka/active_motion_generator.h>
 #include <franka/active_torque_control.h>
 #include <franka/robot.h>
-#include <franka/robot_model_base.h>
 
 #include <utility>
 

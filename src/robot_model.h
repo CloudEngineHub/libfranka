@@ -8,7 +8,7 @@
 #include <pinocchio/multibody/data.hpp>
 #include <pinocchio/multibody/model.hpp>
 
-#include <franka/robot_model_base.h>
+#include "robot_model_base.h"
 
 /**
  * @file robot_model.h

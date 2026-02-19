@@ -8,6 +8,8 @@ All notable changes to libfranka in this file.
 - feat: updated cmake_minimum_required to v3.16
 - fix: jenkins pipeline updated for internal usage
 
+- **BREAKING**: removed `franka/robot_model.h` header for pinocchio dependency leak in public interface.
+
 ## [0.20.4]
 ### libfranka - C++
 - fix: valgrind will not report as error reachable-type memleaks from gtest (see https://github.com/google/googletest/issues/4109)
