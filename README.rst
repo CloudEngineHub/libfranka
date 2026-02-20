@@ -5,6 +5,22 @@ libfranka: C++ Library for Franka Robotics Research Robots
    :target: https://codecov.io/gh/frankarobotics/libfranka
    :alt: codecov
 
+.. image:: https://img.shields.io/github/actions/workflow/status/frankarobotics/libfranka/libfranka-build.yml?label=build&logo=github&logoColor=white
+   :target: https://github.com/frankarobotics/libfranka/actions/workflows/libfranka-build.yml
+   :alt: build status
+
+.. image:: https://img.shields.io/github/actions/workflow/status/frankarobotics/libfranka/pylibfranka-docs.yml?label=python%20docs&logo=sphinx&logoColor=white
+   :target: https://github.com/frankarobotics/libfranka/actions/workflows/pylibfranka-docs.yml
+   :alt: pylibfranka docs build status
+
+.. image:: https://img.shields.io/github/actions/workflow/status/frankarobotics/libfranka/doxygen.yml?label=Doxygen&logo=doxygen&logoColor=white
+   :target: https://github.com/frankarobotics/libfranka/actions/workflows/doxygen.yml
+   :alt: doxygen build status
+
+.. image:: https://img.shields.io/github/actions/workflow/status/frankarobotics/libfranka/docker-image.yml?label=docker&logo=docker&logoColor=white
+   :target: https://github.com/frankarobotics/libfranka/actions/workflows/docker-image.yml
+   :alt: docker build status
+
 **libfranka** is a C++ library that provides low-level control of Franka Robotics research robots.
 The `API References <https://frankarobotics.github.io/docs/libfranka/docs/api_references.html>`_ offers an overview of its capabilities,
 while the `Franka Control Interface (FCI) documentation <https://frankarobotics.github.io/docs>`_ provides more information on setting up the robot and utilizing its features and functionalities.
@@ -57,19 +73,25 @@ Supported Platforms
    * - Ubuntu Version
      - Codename
      - Architecture
-     - Status
+     - Build Status
    * - 20.04 LTS
      - focal
      - amd64
-     - Supported
+     - .. image:: https://img.shields.io/github/actions/workflow/status/frankarobotics/libfranka/libfranka-build.yml?label=Ubuntu+20.04&logo=ubuntu&logoColor=white
+          :target: https://github.com/frankarobotics/libfranka/actions/workflows/libfranka-build.yml
+          :alt: Ubuntu 20.04 build status
    * - 22.04 LTS
      - jammy
      - amd64
-     - Supported
+     - .. image:: https://img.shields.io/github/actions/workflow/status/frankarobotics/libfranka/libfranka-build.yml?label=Ubuntu+22.04&logo=ubuntu&logoColor=white
+          :target: https://github.com/frankarobotics/libfranka/actions/workflows/libfranka-build.yml
+          :alt: Ubuntu 22.04 build status
    * - 24.04 LTS
      - noble
      - amd64
-     - Supported
+     - .. image:: https://img.shields.io/github/actions/workflow/status/frankarobotics/libfranka/libfranka-build.yml?label=Ubuntu+24.04&logo=ubuntu&logoColor=white
+          :target: https://github.com/frankarobotics/libfranka/actions/workflows/libfranka-build.yml
+          :alt: Ubuntu 24.04 build status
 
 Quick Install
 ^^^^^^^^^^^^^
@@ -496,6 +518,27 @@ For more examples, see the `Usage Examples documentation <https://frankarobotics
 
 7. Pylibfranka (Python Bindings)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. list-table::
+   :header-rows: 1
+   :widths: 25 50
+
+   * - Ubuntu Version
+     - Wheel Build Status
+   * - Ubuntu 20.04
+     - .. image:: https://img.shields.io/github/actions/workflow/status/frankarobotics/libfranka/pylibfranka-wheels.yml?label=python3.9&logo=python&logoColor=white
+          :target: https://github.com/frankarobotics/libfranka/actions/workflows/pylibfranka-wheels.yml
+          :alt: Python 3.9 wheel build status
+   * - Ubuntu 22.04
+     - .. image:: https://img.shields.io/github/actions/workflow/status/frankarobotics/libfranka/pylibfranka-wheels.yml?label=python3.10&logo=python&logoColor=white
+          :target: https://github.com/frankarobotics/libfranka/actions/workflows/pylibfranka-wheels.yml
+          :alt: Python 3.10 wheel build status
+       .. image:: https://img.shields.io/github/actions/workflow/status/frankarobotics/libfranka/pylibfranka-wheels.yml?label=python3.11&logo=python&logoColor=white
+          :target: https://github.com/frankarobotics/libfranka/actions/workflows/pylibfranka-wheels.yml
+          :alt: Python 3.11 wheel build status
+   * - Ubuntu 24.04
+     - .. image:: https://img.shields.io/github/actions/workflow/status/frankarobotics/libfranka/pylibfranka-wheels.yml?label=python3.12&logo=python&logoColor=white
+          :target: https://github.com/frankarobotics/libfranka/actions/workflows/pylibfranka-wheels.yml
+          :alt: Python 3.12 wheel build status
 
 **Pylibfranka** provides Python bindings for libfranka, allowing robot control with Python.
 
