@@ -2,6 +2,12 @@
 
 All notable changes to libfranka in this file.
 
+## Unreleased
+
+- Add `franka::MobileModel` class for mobile robot forward kinematics (swerve drive module poses via Pinocchio).
+- `franka::Model` now rejects mobile robot URDFs with a `ModelException`; use `franka::MobileModel` instead.
+- `Robot::loadModel()` throws `InvalidOperationException` for mobile robots; use `Robot::getRobotModel()` with `MobileModel` directly.
+
 ## [0.20.5]
 ### libfranka - C++
 - fix: Sometimes the PTP motion could get stuck in 'idle' after reaching the goal while doing async PTP motions
