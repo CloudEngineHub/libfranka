@@ -338,7 +338,16 @@ void Robot::stop() {
   impl_->executeCommand<research_interface::robot::StopMove>();
 }
 
+bool Robot::isMobileRobot() const noexcept {
+  return impl_->isMobileRobot();
+}
+
 Model Robot::loadModel() {
+  if (impl_->isMobileRobot()) {
+    throw InvalidOperationException(
+        "libfranka: loadModel() is not available for mobile robots. "
+        "Use franka::MobileModel with the URDF from getRobotModel() instead.");
+  }
   return impl_->loadModel(getRobotModel());
 }
 
