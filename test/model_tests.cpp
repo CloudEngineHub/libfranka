@@ -89,7 +89,7 @@ TEST(CorrectModel, CanHandleNoModel) {
   franka::Robot robot("127.0.0.1", franka::RealtimeConfig::kIgnore);
 
   // Find and load a valid URDF from the test directory
-  std::string urdf_path = franka_test_utils::getUrdfPath(__FILE__);
+  std::string urdf_path = franka_test_utils::getArmUrdfPath(__FILE__);
   auto urdf_string = franka_test_utils::readFileToString(urdf_path);
 
   server

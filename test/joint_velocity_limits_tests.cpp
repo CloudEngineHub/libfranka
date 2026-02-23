@@ -10,7 +10,7 @@
 using namespace franka;
 
 TEST(JointVelocityLimits, ParseConfigFromFR3URDF) {
-  std::string urdf_path = franka_test_utils::getUrdfPath(__FILE__);
+  std::string urdf_path = franka_test_utils::getArmUrdfPath(__FILE__);
   auto urdf_string = franka_test_utils::readFileToString(urdf_path);
   ASSERT_FALSE(urdf_string.empty()) << "Failed to read URDF file: " << urdf_path;
 
