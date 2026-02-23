@@ -109,6 +109,8 @@ add_library(franka SHARED
   src/vacuum_gripper.cpp
   src/vacuum_gripper_state.cpp
   src/robot_model.cpp
+  src/urdf_robot_type.cpp
+  src/mobile_model.cpp
 
   src/async_control/async_position_control_handler.cpp
 
