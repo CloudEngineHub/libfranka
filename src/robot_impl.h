@@ -20,6 +20,7 @@
 #include "network.h"
 #include "robot_control.h"
 #include "robot_model_base.h"
+#include "urdf_robot_type.h"
 
 namespace franka {
 
