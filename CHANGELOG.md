@@ -2,13 +2,12 @@
 
 All notable changes to libfranka in this file.
 
-## UNRELEASED
+## [0.20.5]
 ### libfranka - C++
 - fix: Sometimes the PTP motion could get stuck in 'idle' after reaching the goal while doing async PTP motions
 - feat: updated cmake_minimum_required to v3.16
 - fix: jenkins pipeline updated for internal usage
-
-- **BREAKING**: removed `franka/robot_model.h` header for pinocchio dependency leak in public interface.
+- fix: removed `franka/robot_model.h` header for pinocchio dependency leak in public interface.
 
 ## [0.20.4]
 ### libfranka - C++
