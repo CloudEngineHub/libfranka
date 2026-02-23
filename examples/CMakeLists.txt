@@ -50,7 +50,6 @@ set(EXAMPLES
   motion_with_control
   motion_with_control_external_control_loop
   print_joint_poses
-  tmr_mobile_model
   vacuum_object
 )
 
