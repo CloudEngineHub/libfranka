@@ -2,6 +2,7 @@
 // Use of this source code is governed by the Apache-2.0 license, see LICENSE
 #include "robot_model.h"
 
+#include <franka/exception.h>
 #include <franka/model.h>
 
 #include <iostream>
@@ -12,6 +13,8 @@
 
 #include <fstream>
 #include <sstream>
+
+#include "urdf_robot_type.h"
 
 using namespace std::string_literals;  // NOLINT(google-build-using-namespace)
 
@@ -24,6 +27,11 @@ Frame operator++(Frame& frame, int /* dummy */) noexcept {
 }
 
 Model::Model(const std::string& urdf_model) {
+  if (isMobileRobotUrdf(urdf_model)) {
+    throw ModelException(
+        "libfranka: Cannot create arm Model from a mobile robot URDF. "
+        "Use franka::MobileModel instead.");
+  }
   robot_model_ = std::make_unique<RobotModel>(urdf_model);
 }
 

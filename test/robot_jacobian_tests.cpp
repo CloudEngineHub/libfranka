@@ -80,7 +80,7 @@ class RobotJacobianTest : public ::testing::Test {
   };
 
   void SetUp() override {
-    std::string urdf_path = franka_test_utils::getUrdfPath(__FILE__);
+    std::string urdf_path = franka_test_utils::getArmUrdfPath(__FILE__);
     auto urdf_string = franka_test_utils::readFileToString(urdf_path);
 
     model = std::make_unique<franka::RobotModel>(urdf_string);

@@ -51,6 +51,8 @@ add_executable(run_all_tests
   logging/logging_tests.cpp
   logging/robot_state_logger_tests.cpp
   joint_velocity_limits_tests.cpp
+  mobile_model_tests.cpp
+  urdf_robot_type_tests.cpp
 
   async_control/async_position_control_tests.cpp
 )

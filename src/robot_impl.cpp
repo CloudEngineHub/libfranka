@@ -71,7 +71,12 @@ Robot::Impl::Impl(std::unique_ptr<Network> network, size_t log_size, RealtimeCon
 
   auto get_robot_model =
       this->executeCommand<research_interface::robot::GetRobotModel, GetRobotModelResult>();
-  joint_velocity_limits_config_ = JointVelocityLimitsConfig(get_robot_model.robot_model_urdf);
+  robot_model_urdf_ = get_robot_model.robot_model_urdf;
+  is_mobile_robot_ = isMobileRobotUrdf(robot_model_urdf_);
+
+  if (!is_mobile_robot_) {
+    joint_velocity_limits_config_ = JointVelocityLimitsConfig(robot_model_urdf_);
+  }
 }
 
 RobotState Robot::Impl::updateMotion(
@@ -225,6 +230,14 @@ void Robot::Impl::updateState(const research_interface::robot::RobotState& robot
 
 Robot::ServerVersion Robot::Impl::serverVersion() const noexcept {
   return ri_version_;
+}
+
+bool Robot::Impl::isMobileRobot() const noexcept {
+  return is_mobile_robot_;
+}
+
+const std::string& Robot::Impl::robotModelUrdf() const noexcept {
+  return robot_model_urdf_;
 }
 
 bool Robot::Impl::motionGeneratorRunning() const noexcept {

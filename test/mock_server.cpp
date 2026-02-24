@@ -16,7 +16,7 @@ namespace {
 std::string getTestUrdfContent() {
   static std::string cached_urdf;
   if (cached_urdf.empty()) {
-    std::string urdf_path = franka_test_utils::getUrdfPath(__FILE__);
+    std::string urdf_path = franka_test_utils::getArmUrdfPath(__FILE__);
     cached_urdf = franka_test_utils::readFileToString(urdf_path);
   }
   return cached_urdf;
