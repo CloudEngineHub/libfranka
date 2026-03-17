@@ -59,7 +59,7 @@ jobs:
           options: -v ${{ github.workspace }}:/workspaces
           run: |
             cd /workspaces
-            cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -B build -S .
+            cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -B build -S .
             cmake --build build -- -j$(nproc)
             cd build
             cpack -G DEB
