@@ -7,6 +7,7 @@ All notable changes to libfranka in this file.
 - Add `franka::MobileModel` class for mobile robot forward kinematics (swerve drive module poses via Pinocchio).
 - `franka::Model` now rejects mobile robot URDFs with a `ModelException`; use `franka::MobileModel` instead.
 - `Robot::loadModel()` throws `InvalidOperationException` for mobile robots; use `Robot::getRobotModel()` with `MobileModel` directly.
+- chore: disabled test building by default 
 
 ## [0.20.5]
 ### libfranka - C++

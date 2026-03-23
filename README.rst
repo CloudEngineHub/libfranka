@@ -195,7 +195,7 @@ Method A: Using Visual Studio Code (Recommended)
    .. code-block:: bash
 
       mkdir build && cd build
-      cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF ..
+      cmake -DCMAKE_BUILD_TYPE=Release ..
       cmake --build . -- -j$(nproc)
 
 6. **Create Debian package** (optional)
@@ -237,7 +237,7 @@ Method B: Using Docker Command Line
 
       # Inside container:
       mkdir build && cd build
-      cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF ..
+      cmake -DCMAKE_BUILD_TYPE=Release ..
       cmake --build . -- -j$(nproc)
       cpack -G DEB
       exit
@@ -428,7 +428,6 @@ Build libfranka
 
    mkdir build && cd build
    cmake -DCMAKE_BUILD_TYPE=Release \
-         -DBUILD_TESTS=OFF \
          -DCMAKE_INSTALL_PREFIX=/usr/local ..
    cmake --build . -- -j$(nproc)
 

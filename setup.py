@@ -81,7 +81,6 @@ class CMakeBuild(build_ext):
         cmake_args = [
             f"-DCMAKE_LIBRARY_OUTPUT_DIRECTORY={extdir}",
             f"-DPYTHON_EXECUTABLE={sys.executable}",
-            f"-DBUILD_TESTS=OFF",
             f"-DGENERATE_PYLIBFRANKA=ON",
             f"-DCMAKE_POLICY_VERSION_MINIMUM=3.5",
             "-DCMAKE_BUILD_TYPE=Release",
