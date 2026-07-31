@@ -2,6 +2,14 @@
 
 All notable changes to libfranka in this file.
 
+
+## [0.21.3]
+- fix: `ActiveControl` destructor no longer lets exceptions (e.g. `NetworkException` from `cancelMotion()` on an already-interrupted TCP connection) escape, which previously called `std::terminate()` and crashed the process after an error/reflex interrupted a motion (notably via pylibfranka).
+### pylibfranka - Python
+- fix: TargetStatus enum pybind added.
+- Ship PEP 561 type stubs (`.pyi`) generated with `pybind11-stubgen` as a post-build step, bundled in the wheels together with a `py.typed` marker for LSP/IDE type hints.
+- Move the Python packaging (`setup.py`, `pyproject.toml`, `setup.cfg`, `requirements.txt`) and the importable package into the `pylibfranka/` subproject folder so the repo root stays C++-only; no change to the built wheel contents or public API.
+
 ## [0.21.2]
 - fix broken test on builds relying on poco 1.12.x
 - docu: Maintenance work on documentation
